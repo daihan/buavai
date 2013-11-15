@@ -638,8 +638,10 @@ box-shadow:0 0 0 1px rgba(255,255,255,.2) inset;
 }
 /*LLLLLLLLLLLLLOOOOOOOOOOVVVVVVVVVVEEEEEEEEEEEEEEEEE */
 .post-info-pad ul.actions li a.love span{
-    background: #f4f4f4 url(../images/grid-function-sprite.png) center -68px no-repeat;
-    
+    background: #f4f4f4 url(../images/grid-function-sprite.png) center -68px no-repeat; 
+}
+.post-info-pad ul.actions li a.love.loved span{
+    background: #000 url(../images/grid-function-sprite.png) center -136px no-repeat;
 }
 .post-info-pad ul.actions li a.love:hover span {
     background: #aaa url(../images/grid-function-sprite.png) center -136px no-repeat;
@@ -648,6 +650,9 @@ box-shadow:0 0 0 1px rgba(255,255,255,.2) inset;
 /*UNNNNNNNNNNNNNNNNNNNNNNNNNNN---LLLLLLLLLLLLLLLLLLLLLLOOOOOOOOOOVVVVVVVVVVEEEEEEEEEEEEEEEEE */
 .post-info-pad ul.actions li a.unlove span{
 	background: #f4f4f4 url(../images/grid-function-sprite.png) center -102px no-repeat;
+}
+.post-info-pad ul.actions li a.unlove.unloved span{
+	background: #000 url(../images/grid-function-sprite.png) center -170px no-repeat;
 }
 .post-info-pad ul.actions li a.unlove:hover span {
     background: #aaa url(../images/grid-function-sprite.png) center -170px no-repeat;

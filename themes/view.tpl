@@ -114,37 +114,40 @@
                         {if $smarty.session.USERID ne ""}
                             {insert name=get_fav_status value=var assign=isfav PID=$p.PID}
                             {if $isfav eq "1"}
+                                        <li class="count"><a class="count"></a><span id="love_count_{$p.PID}" class="badge-item-love-count">{$fcount}</span></li>
                                         <li>
-                                            <a class="vote love loved" id="post_love_{$p[i].PID}" rel="{$p[i].PID}" href="javascript:void(0);"><span>{$lang144}</span></a>
+                                            <a class="vote love loved" id="post_love_{$p.PID}" rel="{$p.PID}" href="javascript:void(0);"><span>{$lang144}</span></a>
                                         </li>                                     
                                         <li>
-                                            <a id="vote-down-btn-{$p[i].PID}" class="unlove badge-vote-down "  entryId="{$p[i].PID}" href="javascript:void(0);"><span>{$lang180}</span></a>
+                                            <a id="vote-down-btn-{$p.PID}" class="unlove badge-vote-down "  entryId="{$p.PID}" href="javascript:void(0);"><span>{$lang180}</span></a>
                                         </li>
                                         {else}
-                                        	{insert name=get_unfav_status value=var assign=isunfav PID=$p[i].PID}
+                                        	{insert name=get_unfav_status value=var assign=isunfav PID=$p.PID}
                                         	{if $isunfav eq "1"}
+                                            <li class="count"><a class="count"></a><span id="love_count_{$p.PID}" class="badge-item-love-count">{$fcount}</span></li>
                                             <li>
-                                                <a class="vote love " id="post_love_{$p[i].PID}" rel="{$p[i].PID}" href="javascript:void(0);"><span>{$lang144}</span></a>
+                                                <a class="vote love " id="post_love_{$p.PID}" rel="{$p.PID}" href="javascript:void(0);"><span>{$lang144}</span></a>
                                             </li>
                                             <li>
-                                                <a id="vote-down-btn-{$p[i].PID}" class="unlove badge-vote-down unloved "  entryId="{$p[i].PID}" href="javascript:void(0);"><span>{$lang180}</span></a>
+                                                <a id="vote-down-btn-{$p.PID}" class="unlove badge-vote-down unloved "  entryId="{$p.PID}" href="javascript:void(0);"><span>{$lang180}</span></a>
                                             </li>
                                             {else}
+                                            <li class="count"><a class="count"></a><span id="love_count_{$p.PID}" class="badge-item-love-count">{$fcount}</span></li>
                                             <li>
-                                                <a class="vote love " id="post_love_{$p[i].PID}" rel="{$p[i].PID}" href="javascript:void(0);"><span>{$lang144}</span></a>
+                                                <a class="vote love " id="post_love_{$p.PID}" rel="{$p.PID}" href="javascript:void(0);"><span>{$lang144}</span></a>
                                             </li>
                                             <li>
-                                                <a id="vote-down-btn-{$p[i].PID}" class="unlove badge-vote-down "  entryId="{$p[i].PID}" href="javascript:void(0);"><span>{$lang180}</span></a>
+                                                <a id="vote-down-btn-{$p.PID}" class="unlove badge-vote-down "  entryId="{$p.PID}" href="javascript:void(0);"><span>{$lang180}</span></a>
                                             </li>
                                             {/if}
                                     	{/if}
                          {else}
-                            <li class="count"><a class="count"></a><span id="love_count_{$p[i].PID}" class="badge-item-love-count">{$fcount}</span></li>
+                            <li class="count"><a class="count"></a><span id="love_count_{$p.PID}" class="badge-item-love-count">{$fcount}</span></li>
                             <li>
-                           	    <a class="vote love " id="post_love_{$p[i].PID}" rel="{$p[i].PID}" href="{$baseurl}/login"><span>{$lang144}</span></a>
+                           	    <a class="vote love " id="post_love_{$p.PID}" rel="{$p.PID}" href="{$baseurl}/login"><span>{$lang144}</span></a>
                             </li>
                             <li>
-                           	    <a id="vote-down-btn-{$p[i].PID}" class="unlove badge-vote-down " entryId="{$p[i].PID}" href="{$baseurl}/login"><span>{$lang180}</span></a>
+                           	    <a id="vote-down-btn-{$p.PID}" class="unlove badge-vote-down " entryId="{$p.PID}" href="{$baseurl}/login"><span>{$lang180}</span></a>
                             </li>
                          {/if}
                     </li>
@@ -231,25 +234,46 @@
     {include file='right.tpl'}
 	{literal}
     <script type="text/javascript">
-    $('#post_view_love').click(function(){
-        if( $('#post_view_love').hasClass('current')){
-            $('#post_view_love').removeClass('current');
-        likedeg(-1);
+    $('.unlove').click(function(){
+        var id=$(this).attr('entryId');
+        if( $(this).hasClass('unloved')){
+        $(this).removeClass('unloved');
+        ulikedeg($(this).attr('entryId'),0,-1);
         }else{
-            likedeg(1);
-        $('#post_view_love').addClass('current');
+        $(this).addClass('unloved');
+        if($('#post_love_'+id).hasClass('loved')){
+        ulikedeg($(this).attr('entryId'),-1,1);	
+        $('#post_love_'+id).removeClass('loved');
+        }else{
+        ulikedeg($(this).attr('entryId'),0,1);	
+        }
+        }
+    });
+    $('.vote').click(function(){
+        var id=$(this).attr('rel');
+        if( $(this).hasClass('loved')){
+        $(this).removeClass('loved');
+        ulikedeg($(this).attr('rel'),-1,0);
+        }else{
+        $(this).addClass('loved');
+        if($('#vote-down-btn-'+id).hasClass('unloved')){
+        $('#vote-down-btn-'+id).removeClass('unloved');
+        ulikedeg($(this).attr('rel'),1,-1);
+        }else{
+        ulikedeg($(this).attr('rel'),1,0);
+        }
+        }
+    });        
+        function ulikedeg(p,l,u){
+        jQuery.ajax({
+        type:'POST',
+        url:'{/literal}{$baseurl}{literal}'+ '/votegag.php',
+        data:'l='+l+'&pid=' + p +'&u='+u,
+        success:function(e){
+        $('#love_count_'+p).html(e);
         }
         });
-    function likedeg(x){
-        jQuery.ajax({
-            type:'POST',
-            url:'{/literal}{$baseurl}{literal}'+ '/likedeg.php',
-            data:'art='+x+'&pid=' +  '{/literal}{$p.PID}{literal}' ,
-            success:function(e){
-                $('#love_count').html(e);
-                }
-            });
-        }
+        }        
     </script>
     <script type="text/javascript">
          var barloc=$('#post-control-bar').offset().top; 
