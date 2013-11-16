@@ -1,4 +1,17 @@
+<div class="post-next-prev">
+    {if $prev != ""}
+        <a id="prev_post" class="prev-post" href="{$baseurl}/gag/{$prev}" onclick="_gaq.push(['_trackEvent', 'View-Post', 'Clicked', 'Previous', 1]);"> << Prev</a>
+    {else}
+        <a id="prev_post" class="prev-post" href="{$baseurl}/random" onclick="_gaq.push(['_trackEvent', 'View-Post', 'Clicked', 'Previous', 1]);"> << Prev</a>
+    {/if}
+    {if $next ne ""}
+        <a id="next_post" class="next-post" href="{$baseurl}/gag/{$next}" onclick="_gaq.push(['_trackEvent', 'View-Post', 'Clicked', 'Next', 1]);">Next >></a>
+    {else}
+        <a id="next_post" class="next-post" href="{$baseurl}/random" onclick="_gaq.push(['_trackEvent', 'View-Post', 'Clicked', 'Next', 1]);">Next >></a>
+    {/if}
+</div>
 {if $p.nsfw eq "1" AND $smarty.session.USERID eq ""}
+{*
 	<div>
         <div class="post-next-prev">
             {if $prev != ""}
@@ -13,6 +26,7 @@
             {/if}
         </div>
     </div>
+ *}
     <div id="main" class="middle">
         <div id="content-holder">
             <div id="content-holder">
@@ -36,6 +50,7 @@
 </div>
 <div id="footer" class="middle">
 {elseif $p.nsfw eq "1" AND $smarty.session.FILTER eq "1"}
+{*
 	<div>
         <div class="post-next-prev">
             {if $prev != ""}
@@ -50,6 +65,7 @@
             {/if}
         </div>
     </div>
+ *}
     <div id="main" class="middle">
         <div id="content-holder">
             <div id="content-holder">
@@ -77,6 +93,7 @@
         <div id="content-holder">
             <div class="post-info-pad">
                 <h1>{$p.story|stripslashes}</h1>
+                {*
                 <p>
                     <a style="color:#05b2a0" href="{$baseurl}/user/{$p.username|stripslashes}"><b>{$p.username|stripslashes}</b></a>
                     <span class="seperator">|</span>
@@ -90,8 +107,47 @@
                     <a href="{$baseurl}/deletepost.php?pid={$p.PID}" class="delete" onclick="return confirm('{$lang147}');"><b>{$lang145}</b></a>	
                     {/if}										
                 </p>
+                *}
+                {insert name=get_fav_count value=var assign=fcount PID=$p.PID}
                 <ul class="actions">
-                	<li>{if $smarty.session.USERID ne ""}{insert name=get_fav_status value=var assign=isfav PID=$p.PID}<a id="post_view_love" rel="{$p.PID}" class="love {if $isfav eq "1"}current{/if}" href="javascript:void(0);">{$lang144}</a>{else}<a class="love" href="{$baseurl}/login">{$lang144}</a>{/if}</li>
+                	<li>
+                        {if $smarty.session.USERID ne ""}
+                            {insert name=get_fav_status value=var assign=isfav PID=$p.PID}
+                            {if $isfav eq "1"}
+                                        <li>
+                                            <a class="vote love loved" id="post_love_{$p[i].PID}" rel="{$p[i].PID}" href="javascript:void(0);"><span>{$lang144}</span></a>
+                                        </li>                                     
+                                        <li>
+                                            <a id="vote-down-btn-{$p[i].PID}" class="unlove badge-vote-down "  entryId="{$p[i].PID}" href="javascript:void(0);"><span>{$lang180}</span></a>
+                                        </li>
+                                        {else}
+                                        	{insert name=get_unfav_status value=var assign=isunfav PID=$p[i].PID}
+                                        	{if $isunfav eq "1"}
+                                            <li>
+                                                <a class="vote love " id="post_love_{$p[i].PID}" rel="{$p[i].PID}" href="javascript:void(0);"><span>{$lang144}</span></a>
+                                            </li>
+                                            <li>
+                                                <a id="vote-down-btn-{$p[i].PID}" class="unlove badge-vote-down unloved "  entryId="{$p[i].PID}" href="javascript:void(0);"><span>{$lang180}</span></a>
+                                            </li>
+                                            {else}
+                                            <li>
+                                                <a class="vote love " id="post_love_{$p[i].PID}" rel="{$p[i].PID}" href="javascript:void(0);"><span>{$lang144}</span></a>
+                                            </li>
+                                            <li>
+                                                <a id="vote-down-btn-{$p[i].PID}" class="unlove badge-vote-down "  entryId="{$p[i].PID}" href="javascript:void(0);"><span>{$lang180}</span></a>
+                                            </li>
+                                            {/if}
+                                    	{/if}
+                         {else}
+                            <li class="count"><a class="count"></a><span id="love_count_{$p[i].PID}" class="badge-item-love-count">{$fcount}</span></li>
+                            <li>
+                           	    <a class="vote love " id="post_love_{$p[i].PID}" rel="{$p[i].PID}" href="{$baseurl}/login"><span>{$lang144}</span></a>
+                            </li>
+                            <li>
+                           	    <a id="vote-down-btn-{$p[i].PID}" class="unlove badge-vote-down " entryId="{$p[i].PID}" href="{$baseurl}/login"><span>{$lang180}</span></a>
+                            </li>
+                         {/if}
+                    </li>
                 </ul>            
             </div>
         
@@ -102,6 +158,7 @@
                     <div class="twitter-btn"><a href="https://twitter.com/share" class="twitter-share-button" data-text="{$p.title}" data-url="{$baseurl}/gag/{$p.PID}" data-count="horizontal" data-via=""></a></div>
                     <div class="google-btn"><g:plusone size="medium" href="{$baseurl}/gag/{$p.PID}"></g:plusone></div>
                 </div>
+                {*
                 <div class="post-next-prev">
                 	{if $prev != ""}
                 	<a id="prev_post" class="prev-post" href="{$baseurl}/gag/{$prev}" onclick="_gaq.push(['_trackEvent', 'View-Post', 'Clicked', 'Previous', 1]);"></a>
@@ -114,6 +171,7 @@
                     <a id="next_post" class="next-post" href="{$baseurl}/random" onclick="_gaq.push(['_trackEvent', 'View-Post', 'Clicked', 'Next', 1]);"></a>
                     {/if}
                 </div>
+                *}
             </div>
             <div id="content">
                 <div class="post-container">

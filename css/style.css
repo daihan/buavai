@@ -535,8 +535,8 @@ border-color:#00a5f0
 /*background-color:#3B5998; 
 -webkit-border-radius:5px 5px 0 0;
 -moz-border-radius:5px 5px 0 0;
-*/
-padding:20px;
+
+padding:20px;*/
 position:relative;
 height:50px;
 /*
@@ -586,13 +586,15 @@ list-style-type:none;
 overflow:hidden;
 top:20px;
 right:20px;
+/*
 border-radius:5px;
 -webkit-border-radius:5px;
 -moz-border-radius:5px;
-background-color:#000
+*/
 }
 .post-info-pad ul.actions li{
-float:left
+float:left;
+margin-left: 5px
 }
 .post-info-pad ul.actions li a{
 float:left;
@@ -601,20 +603,65 @@ border-radius:5px;
 -moz-border-radius:5px;
 text-indent:-9999px;
 display:block;
-width:68px;
-height:48px;
+width:44px;
+height:34px;
 -webkit-transition:background-color .2s linear;
 -moz-transition:background-color .2s linear;
+background-color:#f4f4f4
+/*
 border:1px solid #193776;
 box-shadow:0 0 0 1px rgba(255,255,255,.2) inset;
 -moz-box-shadow:0 0 0 1px rgba(255,255,255,.2) inset;
 -webkit-box-shadow:0 0 0 1px rgba(255,255,255,.2) inset
+*/
 }
+.post-info-pad ul.actions li a span{
+    display: block;
+    width:44px;
+    height:34px;
+    border-radius:3px;
+    -webkit-border-radius:3px;
+    -moz-border-radius:3px;
+}
+.post-info-pad ul.actions li a.count{
+    display: block;
+    background-color:#FFF
+}
+.post-info-pad ul.actions li.count span{
+    font-size: 18px;
+    line-height: 34px;
+    color: #555;
+    float: left;
+    padding-right: 15px;
+    text-align: right;
+    font-weight: normal
+}
+/*LLLLLLLLLLLLLOOOOOOOOOOVVVVVVVVVVEEEEEEEEEEEEEEEEE */
+.post-info-pad ul.actions li a.love span{
+    background: #f4f4f4 url(../images/grid-function-sprite.png) center -68px no-repeat;
+    
+}
+.post-info-pad ul.actions li a.love:hover span {
+    background: #aaa url(../images/grid-function-sprite.png) center -136px no-repeat;
+}
+
+/*UNNNNNNNNNNNNNNNNNNNNNNNNNNN---LLLLLLLLLLLLLLLLLLLLLLOOOOOOOOOOVVVVVVVVVVEEEEEEEEEEEEEEEEE */
+.post-info-pad ul.actions li a.unlove span{
+	background: #f4f4f4 url(../images/grid-function-sprite.png) center -102px no-repeat;
+}
+.post-info-pad ul.actions li a.unlove:hover span {
+    background: #aaa url(../images/grid-function-sprite.png) center -170px no-repeat;
+}
+/*
 .post-info-pad ul.actions li a.love{
 background:url(../images/sprite_v12.png) no-repeat -90px -159px #ccc
 }
+*/
 .post-info-pad ul.actions li a:hover{
 background-color:#eee
+}
+.post-info-pad ul.actions li a.count:hover{
+background-color:#FFF
 }
 .post-info-pad ul.actions li a.love.current{
 background:#5d7bba url(../images/sprite_v12.png) no-repeat -160px -159px;
@@ -651,11 +698,13 @@ box-shadow:0 1px 2px #aaa;
 border-radius:5px
 }
 #post-control-bar{
+background-color:#FFF;
+/*
 border-bottom:1px solid #ddd;
-background-color:#f4f4f4;
 box-shadow:0 0 0 1px #fff inset;
 -moz-box-shadow:0 0 0 1px #fff inset;
 -webkit-box-shadow:0 0 0 1px #fff inset;
+*/
 height:41px;
 min-width:740px;
 margin-bottom:-42px;
@@ -663,37 +712,56 @@ z-index:3;
 position:absolute
 }
 .post-next-prev{
+margin-right: 120px;
+margin-top: 20px;
 float:right
 }
 .post-next-prev .prev-post{
-background:url("../images/sprite_v12.png") no-repeat -10px -322px transparent;
-width:35px;
+/* background:url("../images/sprite_v12.png") no-repeat -10px -322px transparent; */
+width:70px;
 display:block;
 float:left;
-height:26px;
+height:32px;
+line-height: 32px;
+font-size: 13px;
 margin:8px -20px 0 20px;
-overflow:hidden;
+border: 1px solid #DDD;
+border-radius: 3px;
+text-align: center;
+font-weight: bold;
+color: #000;
+/* overflow:hidden; 
 text-indent:-9999px
+*/
 }
 .post-next-prev .next-post{
-background:url("../images/sprite_v12.png") no-repeat -45px -322px transparent;
-width:35px;
+/* background:url("../images/sprite_v12.png") no-repeat -45px -322px transparent; */
+width:70px;
 display:block;
-height:26px;
-margin:8px 20px 0;
-float:right
+height:32px;
+font-size: 13px;
+line-height: 32px;
+margin:8px 30px 0;
+float:right;
+border: 1px solid #DDD;
+border-radius: 3px;
+text-align: center;
+font-weight: bold;
+color: #000;
 }
 .post-next-prev .prev-post:hover{
-background:url("../images/sprite_v12.png") no-repeat -10px -400px transparent
+/* background: #0082FB url("../images/sprite_v12.png") no-repeat -10px -400px transparent */
+background: #0082FB
 }
 .post-next-prev .prev-post:active{
-background:url("../images/sprite_v12.png") no-repeat -10px -374px transparent
+/* background:url("../images/sprite_v12.png") no-repeat -10px -374px transparent */
 }
 .post-next-prev .next-post:hover{
-background:url("../images/sprite_v12.png") no-repeat -45px -426px transparent
+    background: #0082FB
+/* background: #0082FB url("../images/sprite_v12.png") no-repeat -45px -426px transparent */
 }
 .post-next-prev .next-post:active{
-background:url("../images/sprite_v12.png") no-repeat -45px -348px transparent
+/* background:url("../images/sprite_v12.png") no-repeat -45px -348px transparent */
 }
 #content-holder .spread-bar{
 width:auto;
