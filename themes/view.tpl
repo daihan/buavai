@@ -91,8 +91,29 @@
 {else}
     <div id="main">
         <div id="content-holder">
-            <div class="post-info-pad">
-                <h1>{$p.story|stripslashes}</h1>
+            <h1 class="title">{$p.story|stripslashes}</h1>
+            
+            <div id="content">
+                <div class="post-container">
+                    <div class="img-wrap">
+                        {if $p.pic ne ""}
+                        <a href="{$baseurl}/random"><img src="{$purl}/{$p.pic}" alt="{$p.story|stripslashes}"/></a>
+                        {else}
+                        	{if $p.youtube_key != ""}
+                            <center>
+                            <iframe title="scriptolution video player" width="540" height="445" src="http://www.youtube.com/embed/{$p.youtube_key}?wmode=opaque&hl=en_US&fs=1" frameborder="0" allowfullscreen></iframe>
+                            </center>
+                            {else}
+                            <center>
+                            {insert name=return_fod value=a assign=fod fod=$p.fod_key}{$fod}
+                            </center>
+                            {/if}
+                        {/if}
+                    </div>
+                </div>  
+                
+                <div class="post-info-pad">
+                
                 {*
                 <p>
                     <a style="color:#05b2a0" href="{$baseurl}/user/{$p.username|stripslashes}"><b>{$p.username|stripslashes}</b></a>
@@ -176,24 +197,11 @@
                 </div>
                 *}
             </div>
-            <div id="content">
-                <div class="post-container">
-                    <div class="img-wrap">
-                        {if $p.pic ne ""}
-                        <a href="{$baseurl}/random"><img src="{$purl}/{$p.pic}" alt="{$p.story|stripslashes}"/></a>
-                        {else}
-                        	{if $p.youtube_key != ""}
-                            <center>
-                            <iframe title="scriptolution video player" width="540" height="445" src="http://www.youtube.com/embed/{$p.youtube_key}?wmode=opaque&hl=en_US&fs=1" frameborder="0" allowfullscreen></iframe>
-                            </center>
-                            {else}
-                            <center>
-                            {insert name=return_fod value=a assign=fod fod=$p.fod_key}{$fod}
-                            </center>
-                            {/if}
-                        {/if}
-                    </div>
-                </div>            
+                
+                
+                
+                
+                          
                 <div class="comment-section">
                     <h3 class="title" id="comments">{$lang143}</h3>
                     <span class="report-and-source">
@@ -234,6 +242,8 @@
     {include file='right.tpl'}
 	{literal}
     <script type="text/javascript">
+    $('#head-line').css('display', 'none');
+    $('.img-wrap').css('margin-top','0px');
     $('.unlove').click(function(){
         var id=$(this).attr('entryId');
         if( $(this).hasClass('unloved')){
