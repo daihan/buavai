@@ -243,6 +243,7 @@
 	{literal}
     <script type="text/javascript">
     $('#head-line').css('display', 'none');
+    $('#main').css('margin-top','-38px');
     $('.img-wrap').css('margin-top','0px');
     $('.unlove').click(function(){
         var id=$(this).attr('entryId');
