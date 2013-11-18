@@ -18,13 +18,13 @@ body#page-full{
 background-color:#222
 }
 a{
-color:#4c6aa9;
+color:#000;
 text-decoration:none;
 -webkit-transition:color .2s linear;
 -moz-transition:color .2s linear
 }
 a:hover{
-color:#7f9ddc
+color:#0087F7
 }
 a:active{
 color:#193776
