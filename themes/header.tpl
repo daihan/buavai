@@ -77,7 +77,7 @@ function myWindow(location, address, gaCategory, gaAction) { var w = 640; var h 
                 </div>
             </li>
             {else}         
-            <li id="side-bar-signup">
+            <li>
             <a class="signup-button green" href="{$baseurl}/signup" label="Header">{*$lang148*}Sign up</a>
             </li>            
             <li><a href="{$baseurl}/login" class="button">{*$lang197*}Log in</a></li>            
