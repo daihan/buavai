@@ -203,7 +203,7 @@ color:#000;
 text-shadow:0 1px #193776 */
 }
 #head-bar ul.main-menu li a:active{
-padding:21px 20px 19px
+/*padding:21px 20px 19px*/
 }
 #head-bar ul.main-menu li a.add-post{
 padding-left:48px;
@@ -552,7 +552,7 @@ font-size:22px;
 width:600px;
 overflow:hidden;
 text-overflow:ellipsis;
-white-space:nowrap;
+/*white-space:nowrap; */
 padding-left: 45px;
 padding-top: 10px;
 }
@@ -755,7 +755,8 @@ border: 1px solid #DDD;
 border-radius: 3px;
 text-align: center;
 font-weight: bold;
-color: #000;
+color: #FFF;
+background: #0082FB
 }
 .post-next-prev .prev-post:hover{
 /* background: #0082FB url("../images/sprite_v12.png") no-repeat -10px -400px transparent */
