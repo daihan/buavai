@@ -1074,8 +1074,9 @@ position:relative
 
 }
 .thimage{
-border:1px solid #ddd;
 padding:2px;
+/*
+border:1px solid #ddd;
 border-radius:4px;
 -webkit-border-radius:4px;
 -moz-border-radius:4px;
@@ -1085,6 +1086,7 @@ box-shadow:0 1px #fff;
 -moz-box-shadow:0 1px #fff;
 -webkit-box-shadow:0 1px #fff;
 background-color:#ddd;
+*/
 width:224px;
 height:152px;
 overflow:hidden
@@ -1396,6 +1398,7 @@ color: #000;
 }
 */
 #entries-content.list ul .info ul.actions li a.unlove span{
+    margin-left: 30px;
 	background: #f4f4f4 url(../images/grid-function-sprite.png) center -102px no-repeat;
 }
 #entries-content.list ul .info ul.actions li a.unlove:hover span {
@@ -1789,12 +1792,15 @@ height:50px
 background-color:#eee
 }
 .post-may-like{
+margin:40px 0 0;
+    /*
 background-color:#F4F4F4;
 margin:40px 0 0;
 border-top:1px solid #ddd;
 box-shadow:0 0 0 1px #fff inset;
 -moz-box-shadow:0 0 0 1px #fff inset;
 -webkit-box-shadow:0 0 0 1px #fff inset
+*/
 }
 .post-may-like #entries-content{
 padding:20px
