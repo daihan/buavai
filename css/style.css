@@ -2751,18 +2751,22 @@ a.spcl-button.facebook:active{
 background-color:#112f61
 }
 .side-bar .msg-box,.side-bar .feature-people,.side-bar .social-block,.side-bar .tags-block,.popular-block{
+/*
 border-radius:5px;
 -webkit-border-radius:5px;
 -moz-border-radius:5px;
 background-color:#EEE;
 color:#666;
+*/
 margin-bottom:20px;
 padding:12px 15px 15px;
 width:268px;
+/*
 border:1px solid #bbb;
 box-shadow:0 1px #eee,0 0 0 1px #fff inset;
 -moz-box-shadow:0 1px #eee,0 0 0 1px #fff inset;
 -webkit-box-shadow:0 1px #eee,0 0 0 1px #fff inset;
+*/
 text-shadow:0 1px #fff;
 clear:right;
 position:relative
@@ -4327,6 +4331,7 @@ width:728px;
 height:90px;
 display:block;
 padding:5px;
+/*
 border:1px solid #bbb;
 background-color:#ccc;
 border-radius:5px;
@@ -4335,6 +4340,7 @@ border-radius:5px;
 box-shadow:0 1px #eee;
 -moz-box-shadow:0 1px #eee;
 -webkit-box-shadow:0 1px #eee;
+*/
 margin-bottom:20px
 }
 #top-ad-tray a,#top-ad-tray a img,#bottom-ad-tray a,#bottom-ad-tray a img{
@@ -5032,18 +5038,22 @@ list-style:none
 
 /*sidebar widget*/
 .top-10 .widget{
+/*
 border-radius:5px;
 -webkit-border-radius:5px;
 -moz-border-radius:5px;
 background-color:#eee;
 color:#666;
+*/
 margin:0 0 20px 0;
 padding:15px 15px 10px;
 width:268px;
+/*
 border:1px solid #bbb;
 box-shadow:0 1px #eee,0 0 0 1px #fff inset;
 -moz-box-shadow:0 1px #eee,0 0 0 1px #fff inset;
 -webkit-box-shadow:0 1px #eee,0 0 0 1px #fff inset;
+*/
 text-shadow:0 1px #fff;
 clear:right;
 position:relative

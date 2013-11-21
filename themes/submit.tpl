@@ -57,11 +57,13 @@
                             <p class="info" style="visibility:hidden">{$lang116}</p>
                         </label>                    
                     </div>
+                    {*
                     <hr />
                     <div class="field checkbox">
                     	<label for="submit-nsfw">
                     	<input id="submit-nsfw" type="checkbox" class="checkbox" name="nsfw" value="1" />{$lang117}</label>
-                    </div>                
+                    </div>
+                    *}                
                 </form>
             </div>
         
