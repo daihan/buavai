@@ -2,6 +2,7 @@
                     {section name=i loop=$posts}               
                     <li class=" gag-link" data-url="{$baseurl}/gag/{$posts[i].PID}" data-text="{$posts[i].story|stripslashes|mb_truncate:20:"...":'UTF-8'}" gagId="{$posts[i].PID}" itemType="list" id="entry-{$posts[i].PID}">
                         <div class="content">
+							<h1><a href="{$baseurl}/gag/{$posts[i].PID}" class="jump_focus">{$posts[i].story|stripslashes}</a></h1>
                             <div class="img-wrap">
                                 {if $posts[i].nsfw eq "1" AND $smarty.session.FILTER ne "0"}
                                 	<a href="{$baseurl}/gag/{$posts[i].PID}"><img src="{$baseurl}/images/nsfw.jpg" alt="{$posts[i].story|stripslashes}" /></a>
@@ -21,10 +22,24 @@
                                     {/if}
                                 {/if}
                             </div>
-                            <div class="watermark-clear"></div>                        
+                            <div class="watermark-clear"></div>
+							<div class="sharing-box ">
+                                    <ul class="sharing ">
+                                        <li class="facebook" id="share1-{$posts[i].PID}">
+                                        	<span id="list-share-twitter-{$posts[i].PID}">
+                                        	<a href="https://twitter.com/share" class="twitter-share-button" data-text="{$posts[i].story|stripslashes|mb_truncate:20:"...":'UTF-8'}" data-url="{$baseurl}/gag/{$posts[i].PID}" data-count="horizontal" data-via="">&nbsp;</a>		
+                                            </span>
+                                        	<div style="float:right" class="facebook-share-btn">
+                                    		<fb:share-button class=" fb_iframe_widget" href="{$baseurl}/gag/{$posts[i].PID}" type="button_count" fb-xfbml-state="rendered"></fb:share-button>
+                                    		</div>
+                                        </li>
+                                    </ul>
+                                </div>
                         </div>
                         <div style="position:relative;width:220px;float:right">
                             <div class="info scriptolution-stop" id="action-{$posts[i].PID}">
+							{insert name=get_fav_count value=var assign=fcount PID=$posts[i].PID}
+							{*
                                 <h1><a href="{$baseurl}/gag/{$posts[i].PID}" class="jump_focus">{$posts[i].story|stripslashes}</a></h1>
                                 <h4>
                                     <a href="{$baseurl}/user/{$posts[i].username|stripslashes}">{$posts[i].username|stripslashes}</a>
@@ -38,58 +53,54 @@
                                     <span id="love_count_{$posts[i].PID}" class="loved" votes="{$fcount}" score="0">{$fcount}</span>
                                     <span class="viewed">{$posts[i].postviewed}</span>
                                 </p>
+							*}
                                 <ul class="actions">
                                 	{if $smarty.session.USERID ne ""}
                                         {insert name=get_fav_status value=var assign=isfav PID=$posts[i].PID}
                                         {if $isfav eq "1"}
+										<li>
+                                            <a class="vote love loved" id="post_love_{$posts[i].PID}" rel="{$posts[i].PID}" href="javascript:void(0);"><span>{$lang144}</span></a>
+                                        </li>
+										<li class="count"><a></a><span id="love_count_{$posts[i].PID}" class="badge-item-love-count">{$fcount}</span></li>
                                         <li>
                                             <a id="vote-down-btn-{$posts[i].PID}" class="unlove badge-vote-down "  entryId="{$posts[i].PID}" href="javascript:void(0);"><span>{$lang180}</span></a>
-                                        </li>
-                                        <li>
-                                            <a class="vote love loved" id="post_love_{$posts[i].PID}" rel="{$posts[i].PID}" href="javascript:void(0);"><span>{$lang144}</span></a>
                                         </li>
                                         {else}
                                         	{insert name=get_unfav_status value=var assign=isunfav PID=$posts[i].PID}
                                         	{if $isunfav eq "1"}
+											<li>
+                                                <a class="vote love " id="post_love_{$posts[i].PID}" rel="{$posts[i].PID}" href="javascript:void(0);"><span>{$lang144}</span></a>
+                                            </li>
+											<li class="count"><a></a><span id="love_count_{$posts[i].PID}" class="badge-item-love-count">{$fcount}</span></li>
                                             <li>
                                                 <a id="vote-down-btn-{$posts[i].PID}" class="unlove badge-vote-down unloved "  entryId="{$posts[i].PID}" href="javascript:void(0);"><span>{$lang180}</span></a>
                                             </li>
-                                            <li>
+                                            {else}
+											<li>
                                                 <a class="vote love " id="post_love_{$posts[i].PID}" rel="{$posts[i].PID}" href="javascript:void(0);"><span>{$lang144}</span></a>
                                             </li>
-                                            {else}
+											<li class="count"><a></a><span id="love_count_{$posts[i].PID}" class="badge-item-love-count">{$fcount}</span></li>
                                             <li>
                                                 <a id="vote-down-btn-{$posts[i].PID}" class="unlove badge-vote-down "  entryId="{$posts[i].PID}" href="javascript:void(0);"><span>{$lang180}</span></a>
-                                            </li>
-                                        	<li>
-                                                <a class="vote love " id="post_love_{$posts[i].PID}" rel="{$posts[i].PID}" href="javascript:void(0);"><span>{$lang144}</span></a>
                                             </li>
                                             {/if}
                                     	{/if}
                                     {else}
                                     <li>
-                                    	<a id="vote-down-btn-{$posts[i].PID}" class="unlove badge-vote-down " entryId="{$posts[i].PID}" href="{$baseurl}/login"><span>{$lang180}</span></a>
-                                    </li>
-                                    <li>
                                     	<a class="vote love " id="post_love_{$posts[i].PID}" rel="{$posts[i].PID}" href="{$baseurl}/login"><span>{$lang144}</span></a>
+                                    </li>
+									<li class="count"><a></a><span id="love_count_{$posts[i].PID}" class="badge-item-love-count">{$fcount}</span></li>
+									<li>
+                                    	<a id="vote-down-btn-{$posts[i].PID}" class="unlove badge-vote-down " entryId="{$posts[i].PID}" href="{$baseurl}/login"><span>{$lang180}</span></a>
                                     </li>
                                     {/if}
                                 </ul>
-                                <div class="sharing-box ">
-                                    <hr class="arrow" />
-                                    <ul class="sharing ">
-                                        <li class="facebook" id="share1-{$posts[i].PID}">
-                                        	<span id="list-share-twitter-{$posts[i].PID}">
-                                        	<a href="https://twitter.com/share" class="twitter-share-button" data-text="{$posts[i].story|stripslashes|mb_truncate:20:"...":'UTF-8'}" data-url="{$baseurl}/gag/{$posts[i].PID}" data-count="horizontal" data-via="">&nbsp;</a>		
-                                            </span>
-                                        	<div style="float:right" class="facebook-share-btn">
-                                    		<fb:share-button class=" fb_iframe_widget" href="{$baseurl}/gag/{$posts[i].PID}" type="button_count" fb-xfbml-state="rendered"></fb:share-button>
-                                    		</div>
-                                        </li>
-                                    </ul>
-                                </div>
+                                {*
+                                {if $smarty.session.USERID ne ""}
                                 <a class="fix" href="{$baseurl}/fix/{$posts[i].PID}">{$lang142}</a>
                                 <a class="report" entryId="{$posts[i].PID}" href="javascript:void(0);">{$lang146}</a>
+								{/if}
+                                *}
                             </div>
                         </div>
                     </li>
