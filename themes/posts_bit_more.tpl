@@ -2,13 +2,13 @@
                     {section name=i loop=$posts}
                     <li class=" gag-link" data-url="{$baseurl}/gag/{$posts[i].PID}" data-text="{$posts[i].story|stripslashes|mb_truncate:20:"...":'UTF-8'}" gagId="{$posts[i].PID}" itemType="list" id="entry-{$posts[i].PID}">
                         <div class="content">
-							<h1><a href="{$baseurl}/gag/{$posts[i].PID}" class="jump_focus">{$posts[i].story|stripslashes}</a></h1>
+							<h1 style="width:550px"><a href="{$baseurl}/gag/{$posts[i].PID}" class="jump_focus">{$posts[i].story|stripslashes}</a></h1>
                             <div class="img-wrap">
                                 {if $posts[i].nsfw eq "1" AND $smarty.session.FILTER ne "0"}
                                 	<a href="{$baseurl}/gag/{$posts[i].PID}"><img src="{$baseurl}/images/nsfw.jpg" alt="{$posts[i].story|stripslashes}" /></a>
                                 {else}
                                 	{if $posts[i].pic ne ""}
-                                	<a href="{$baseurl}/gag/{$posts[i].PID}"><img style="max-width:460px" src="{$purl}/{$posts[i].pic}" alt="{$posts[i].story|stripslashes}" /></a>
+                                	<a href="{$baseurl}/gag/{$posts[i].PID}"><img style="width:550px" src="{$purl}/{$posts[i].pic}" alt="{$posts[i].story|stripslashes}" /></a>
                                     {else}
                                         {if $posts[i].youtube_key != ""}
                                         <center>
