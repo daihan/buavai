@@ -5,9 +5,9 @@
         </li>
         {/if}
 		{insert name=get_advertisement AID=1}
-        {include file='top10.tpl'}
+        {*include file='top10.tpl'*}
         <div class="msg-box">
-            <h3>{$lang153} {$site_name}</h3>
+            <h3>{*{$lang153} {$site_name}*}Thành viên Thánh Bựa của Bựa Vãi</h3>
             <div class="facebook-like">
                 <iframe src="//www.facebook.com/plugins/like.php?href=http://facebook.com/{$FACEBOOK_PROFILE}%2F&amp;send=false&amp;layout=standard&amp;width=270&amp;show_faces=true&amp;action=like&amp;colorscheme=light&amp;font&amp;height=80" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:270px; height:80px;" allowTransparency="true"></iframe>
             </div>
@@ -22,7 +22,7 @@
         <div id="moving-boxes">
             <div id="post-gag-stay" class="_badge-sticky-elements" data-y="60">
                 <div class="popular-block">
-                    <h3>{$lang260}</h3>
+                    <h3>{*$lang260*}Hot trên cộng đồng Thánh Bựa</h3>
                     <ol>
                     	{insert name=get_feat_gags assign=recgags}
                         {section name=i loop=$recgags}
@@ -67,9 +67,11 @@
                         <li>·<a href="{$baseurl}/privacy_policy">{$lang204}</a></li>
                     </ul>
                     <div style="clear:both"></div>
+                    {*
                     <div style="padding-left:7px; padding-top:10px;">
                     <a><b>Powered by Gag Việt - Phiên Bản {$ver}</b></a>
                     </div>
+                    *}
                 </div>
             </div>
         </div>

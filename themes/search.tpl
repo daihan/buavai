@@ -24,7 +24,7 @@
                                 {elseif $posts[i].fod_key ne ""}
                                 <img src="{$baseurl}/images/fod.jpg" alt="{$posts[i].story|stripslashes}" />
                                 {else}
-                            	{if $posts[i].nsfw eq "1" AND $smarty.session.FILTER ne "0"}<img src="{$baseurl}/images/nsfw_thumb.jpg" alt="{$posts[i].story|stripslashes}" />{else}<img src="{$purl}/t/s-{$posts[i].pic}" alt="{$posts[i].story|stripslashes}" />{/if}
+                            	{if $posts[i].nsfw eq "1" AND $smarty.session.FILTER ne "0"}<img src="{$baseurl}/images/nsfw_thumb.jpg" alt="{$posts[i].story|stripslashes}" />{else}<img src="{$purl}/s-{$posts[i].pic}" alt="{$posts[i].story|stripslashes}" />{/if}
                                 {/if}
                             </div>
                         </a>

@@ -499,8 +499,9 @@ margin:0 0 -10px;
 font-weight:bold
 }
 .search-bar{
-background-color:#f4f4f4;
+/* background-color:#f4f4f4;*/
 padding:20px;
+/*
 border-radius:5px 5px 0 0;
 -webkit-border-radius:5px 5px 0 0;
 -moz-border-radius:5px 5px 0 0;
@@ -508,6 +509,7 @@ box-shadow:0 0 0 1px #fff inset;
 -moz-box-shadow:0 0 0 1px #fff inset;
 -webkit-box-shadow:0 0 0 1px #fff inset;
 border-bottom:1px solid #ddd
+*/
 }
 .search-bar input.search{
 display:block;
