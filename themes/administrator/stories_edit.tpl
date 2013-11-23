@@ -189,8 +189,8 @@
                                                         <td class="label"><label for="marknew">Đánh Dấu Như Bài Mới </label></td>
                                                         <td class="value">
                                                         	<select name="marknew" id="marknew">
-                                                            <option value="1">Có</option>
-                                                            <option value="0" selected>Không</option>
+                                                            <option value="1" selected >Có</option>
+                                                            <option value="0">Không</option>
                                                             </select>
                                                         </td>
                                                         <td class="scope-label">[BÀI ĐĂNG SẼ HIỆN TRÊN CÙNG TRONG TRANG ĐANG HOT HOẶC TRANG BÀI MỚI]</td>

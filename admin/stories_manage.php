@@ -67,15 +67,15 @@ else
 	$add1 = "&sortby=PID";
 }
 
-if($_REQUEST['sorthow']=="desc")
-{
-	$sorthow ="desc";
-	$add1 .= "&sorthow=desc";
-}
-else
+if($_REQUEST['sorthow']=="asc")
 {
 	$sorthow ="asc";
 	$add1 .= "&sorthow=asc";
+}
+else
+{
+	$sorthow ="desc";
+	$add1 .= "&sorthow=desc";
 }
 
 //Search

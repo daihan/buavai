@@ -39,7 +39,7 @@
                     <div class="field">
                         <label>
                             <h4>{$lang111}</h4>
-                            <input id="post_title" type="text" class="text tipped" name="title" maxlength="60" value=""/>
+                            <input id="post_title" type="text" class="text tipped" name="title" maxlength="500" value=""/>
                             <p class="info" style="visibility:hidden">{$lang112}</p>
                         </label>
                     </div>
