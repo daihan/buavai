@@ -107,6 +107,7 @@
                     {/section}
                     {literal}
 					<script type="text/javascript">
+                    FB.XFBML.parse();
                     $('.unlove').click(function(){
                     var id=$(this).attr('entryId');
                     if( $(this).hasClass('unloved')){
