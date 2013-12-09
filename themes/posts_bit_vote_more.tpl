@@ -94,6 +94,14 @@
                                     	<a id="vote-down-btn-{$posts[i].PID}" class="unlove badge-vote-down " entryId="{$posts[i].PID}" href="{$baseurl}/login"><span>{$lang180}</span></a>
                                     </li>
                                     {/if}
+                                    <li>
+                                        <a class="comment" href="{$baseurl}/gag/{$posts[i].PID}" target="_blank">
+                                            <span class="icon"></span>
+                                        </a>
+                                        <p>
+                                            <span class="comment"><fb:comments-count href="{$baseurl}/gag/{$posts[i].PID}"></fb:comments-count></span>
+                                        </p>
+                                    </li>
                                 </ul>
                                 {*
                                 {if $smarty.session.USERID ne ""}
